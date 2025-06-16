@@ -1,103 +1,169 @@
-import Image from "next/image";
+// app/page.tsx
+import Link from "next/link"
+import ProjectCard from "@/components/project-card" // Assuming ProjectCard is updated as well
+
+const projects = [
+  {
+    title: "Sunset Traders",
+    description:
+      "A modern e-commerce platform for thrift goods, designed for intuitive browsing and a seamless shopping experience.",
+    tech: ["React", "Next.js", "Tailwind CSS", "Firebase", "Framer Motion"],
+    image:
+      "https://res.cloudinary.com/cloud-x/image/upload/v1750102861/sunset-traders_s3m9is.png",
+    live: "https://sunset-traders-next.vercel.app/",
+    repo: "https://github.com/nexxdevv/sunset-traders-next",
+  },
+  // Add more projects here following the same structure
+  // {
+  //   title: "Another Project",
+  //   description: "Description of another project.",
+  //   tech: ["Next.js", "TypeScript"],
+  //   image: "https://via.placeholder.com/1200x800",
+  //   live: "#",
+  //   repo: "#",
+  // },
+]
 
 export default function Home() {
   return (
-    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-      <main className="flex flex-col gap-[32px] row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="list-inside list-decimal text-sm/6 text-center sm:text-left font-[family-name:var(--font-geist-mono)]">
-          <li className="mb-2 tracking-[-.01em]">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] px-1 py-0.5 rounded font-[family-name:var(--font-geist-mono)] font-semibold">
-              app/page.tsx
-            </code>
-            .
-          </li>
-          <li className="tracking-[-.01em]">
-            Save and see your changes instantly.
-          </li>
-        </ol>
+    <main
+      // Main container styling:
+      // - bg-zinc-50 for light mode, dark:bg-zinc-900 for a deep dark mode
+      // - text-zinc-800 for light mode, dark:text-zinc-100 for dark mode
+      // - px-6 for general padding, max-w-7xl to center content and limit width
+      // - min-h-screen to ensure it takes full height
+      className="min-h-screen bg-zinc-50 text-zinc-800 dark:bg-zinc-900 dark:text-zinc-100 px-6 sm:px-8 lg:px-12 py-16 mx-auto max-w-7xl"
+    >
+      {/* Hero Section */}
+      <section className="mb-24 md:mb-32 pt-8">
+        <h1
+          // Hero title styling:
+          // - text-5xl for larger size, sm:text-6xl, lg:text-7xl for responsiveness
+          // - font-extrabold for a strong presence
+          // - tracking-tight for tighter letter spacing
+          // - mb-4 for margin below
+          className="text-5xl sm:text-6xl lg:text-7xl font-extrabold tracking-tight mb-4 text-zinc-900 dark:text-white"
+        >
+          Hi, I'm Cliff — <br className="block sm:hidden" />
+          <span className="text-blue-600 dark:text-blue-400">
+            React Developer
+          </span>
+        </h1>
+        <p
+          // Hero description styling:
+          // - text-xl for larger text, max-w-2xl for controlled width
+          // - text-zinc-600 for light mode, dark:text-zinc-300 for dark mode
+          // - leading-relaxed for comfortable line spacing
+          className="text-xl text-zinc-600 dark:text-zinc-300 max-w-2xl leading-snug"
+        >
+          I craft modern, responsive web apps with a focus on intuitive
+          user experiences and elegant functionality.
+        </p>
+      </section>
 
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:w-auto"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 w-full sm:w-auto md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
+      {/* Featured Projects Section */}
+      <section className="mb-24 md:mb-32">
+        <h2
+          // Section title styling:
+          // - text-4xl for prominence
+          // - font-bold for strong emphasis
+          // - mb-10 for generous space below
+          className="text-4xl font-bold mb-10 text-zinc-900 dark:text-white"
+        >
+          Featured Projects
+        </h2>
+        <div
+          // Grid layout for project cards:
+          // - grid-cols-1 for mobile, md:grid-cols-2 for tablets and above
+          // - gap-10 for generous spacing between cards
+          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-10"
+        >
+          {projects.map((project) => (
+            <ProjectCard key={project.title} project={project} />
+          ))}
         </div>
-      </main>
-      <footer className="row-start-3 flex gap-[24px] flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
+      </section>
+
+      {/* Technologies Section */}
+      <section className="mb-24 md:mb-32">
+        <h2 className="text-4xl font-bold mb-8 text-zinc-900 dark:text-white">
+          Technologies I Use
+        </h2>
+        <ul
+          // Tech list styling:
+          // - flex flex-wrap gap-3 for responsive wrapping
+          className="flex flex-wrap gap-3 text-sm"
         >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
+          {[
+            "React",
+            "Next.js",
+            "TypeScript",
+            "Tailwind CSS",
+            "Framer Motion",
+            "Firebase",
+            "Stripe",
+            "Vercel",
+            "Git",
+            "Shadcn/ui",
+          ].map((tech) => (
+            <li
+              key={tech}
+              // Individual tech tag styling:
+              // - bg-zinc-200 for light, dark:bg-zinc-700 for dark
+              // - text-zinc-700 for light, dark:text-zinc-200 for dark
+              // - px-4 py-2 for good padding
+              // - rounded-full for pill shape
+              // - font-medium for a slightly bolder text
+              className="bg-zinc-200 dark:bg-zinc-700 text-zinc-700 dark:text-zinc-200 px-4 py-2 rounded-full font-medium shadow-sm dark:shadow-md"
+            >
+              {tech}
+            </li>
+          ))}
+        </ul>
+      </section>
+
+      {/* Footer Section */}
+      <footer
+        // Footer styling:
+        // - mt-24 for good separation from content
+        // - text-zinc-500 for a subtle text color, dark:text-zinc-400 for dark mode
+        // - border-t for a subtle top separator line
+        // - border-zinc-200 for light, dark:border-zinc-700 for dark
+        // - pt-12 for padding above content
+        className="mt-24 pt-12 text-zinc-500 dark:text-zinc-400 border-t border-zinc-200 dark:border-zinc-700"
+      >
+        <p className="mb-4 text-lg text-zinc-600 dark:text-zinc-300">
+          Connect with me:
+        </p>
+        <div className="flex gap-6 text-lg font-medium">
+          <Link
+            href="https://github.com/nexxdevv" // Replace with your GitHub
+            target="_blank"
+            rel="noopener noreferrer"
+            // Link styling:
+            // - text-blue-600 for prominent link color, dark:text-blue-400
+            // - hover:text-blue-700 for interaction, dark:hover:text-blue-300
+            // - transition-colors for smooth hover
+            className="text-blue-600 hover:text-blue-700 dark:text-blue-400 dark:hover:text-blue-300 transition-colors duration-200"
+          >
+            GitHub
+          </Link>
+          <Link
+            href="mailto:your.email@example.com" // Replace with your email
+            className="text-blue-600 hover:text-blue-700 dark:text-blue-400 dark:hover:text-blue-300 transition-colors duration-200"
+          >
+            Email
+          </Link>
+          <Link
+            href="/cliff-resume.pdf" // Ensure you have this file in your public directory
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-blue-600 hover:text-blue-700 dark:text-blue-400 dark:hover:text-blue-300 transition-colors duration-200"
+          >
+            Resume
+          </Link>
+        </div>
       </footer>
-    </div>
-  );
+    </main>
+  )
 }
