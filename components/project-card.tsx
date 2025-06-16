@@ -9,6 +9,7 @@ type Project = {
   description: string
   tech: string[]
   image: string
+  darkImage: string
   live: string
   repo: string
 }
@@ -24,14 +25,16 @@ export default function ProjectCard({ project }: { project: Project }) {
       transition={{ type: "spring", stiffness: 250, damping: 20 }} // Softer, more "springy" transition
     >
       <div className="relative w-full h-[800px] overflow-hidden bg-zinc-100 dark:bg-zinc-900">
-        <Image
-          src={project.image}
-          alt={project.title}
-          fill
-          className="object-cover object-top" // object-center often looks better
-          priority
-          sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw" // Improve image performance
-        />
+        <Link href={project.live} target="_blank">
+          <Image
+            src={project.image}
+            alt={project.title}
+            fill
+            className="object-cover object-top"
+            priority
+            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+          />
+        </Link>
       </div>
       <div className="p-6">
         {" "}

@@ -10,6 +10,7 @@ const projects = [
     tech: ["React", "Next.js", "Tailwind CSS", "Firebase", "Framer Motion"],
     image:
       "https://res.cloudinary.com/cloud-x/image/upload/v1750102861/sunset-traders_s3m9is.png",
+      darkImage: "https://res.cloudinary.com/cloud-x/image/upload/v1750105552/sunset-trader-dark_s8vod1.png",
     live: "https://sunset-traders-next.vercel.app/",
     repo: "https://github.com/nexxdevv/sunset-traders-next"
   }
