@@ -44,7 +44,7 @@ export default function Home() {
           // - mb-4 for margin below
           className="text-5xl sm:text-6xl lg:text-7xl font-extrabold tracking-tight mb-4 text-zinc-900 dark:text-white"
         >
-          Hi, I'm Cliff — <br className="block sm:hidden" />
+          Hi, I&apos;m Cliff — <br className="block sm:hidden" />
           <span className="text-blue-600 dark:text-blue-400">
             React Developer
           </span>
